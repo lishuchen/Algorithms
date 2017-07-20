@@ -17,11 +17,9 @@ class Solution:
 
         # left: max_heap
         # right: min_heap
-        left, right = [], []
-        heapq.heappush(left, -nums[0])
-        medians = [nums[0]]
+        left, right, medians = [], [], []
 
-        for num in nums[1:]:
+        for num in nums:
             if len(left) <= len(right):
                 heapq.heappush(left, -heapq.heappushpop(right, num))
             else:
