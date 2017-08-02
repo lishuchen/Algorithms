@@ -9,14 +9,15 @@ class Solution:
 
     def uniquePaths(self, m, n):
         # write your code here
+        if m < 0 or n < 0:
+            return 0
+
         pre = [1] * n
         for i in range(1, m):
-            cur = []
-            for j in range(n):
-                if j == 0:
-                    cur.append(pre[0])
-                else:
-                    cur.append(pre[j] + cur[j - 1])
+            cur = [1]
+            for j in range(1, n):
+                cur.append(pre[j] + cur[j - 1])
+
             pre = cur
 
         return pre[-1]
